@@ -31,28 +31,30 @@ public class Convert {
     }
 
     public void selector(String a, char oper, String b) {
+
         Calc calc = new Calc();
         int firstNum;
         int secondNum;
         int result;
         int counter = 0;
 
-        for (int i = 0; i < romeIn.length; i++) {
-            if (a.toUpperCase().equals(romeIn[i])) {
+        for (String s : romeIn) {
+            if (a.toUpperCase().equals(s)) {
                 a = a.toUpperCase();
                 counter++;
             }
-            if (b.toUpperCase().equals(romeIn[i])) {
+            if (b.toUpperCase().equals(s)) {
                 b = b.toUpperCase();
                 counter++;
+            }
         }
-    }
     if (counter == 0) {
         firstNum = Integer.parseInt(a);
         secondNum = Integer.parseInt(b);
         System.out.println(calc.arifmetics(firstNum, oper, secondNum));
     } else if (counter == 1) {
-        throw new ArithmeticException("т.к. используются одновременно разные системы счисления");
+        throw new ArithmeticException("Калькулятор умеет работать только с арабскими или римскими цифрами " +
+                "одновременно, попробуйте ещё раз.");
     } else if (counter == 2) {
         firstNum = arabicConvert(a);
         secondNum = arabicConvert(b);
